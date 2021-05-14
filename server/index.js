@@ -32,10 +32,10 @@ app.use(
             rejectUnauthorized: false
         }
     })
-    .then(()=>{
+    .then((db)=>{
         app.set('db', db)
         console.log('Database Connected!')
-        app.listen(SERVER_PORT=> console.log(`running on ${SERVER_PORT}`));
+        app.listen(SERVER_PORT, ()=> console.log(`running on ${SERVER_PORT}`));
     })
 //Auth Endpoints
 app.post('/api/auth/register', userCtrl.register);
