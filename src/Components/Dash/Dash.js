@@ -23,6 +23,7 @@ class Dash extends Component {
   componentDidMount() {
     this.grabPosts();
   }
+  
 
   grabPosts() {
     let { search, myPosts, oldestFirst } = this.state;
@@ -114,7 +115,7 @@ class Dash extends Component {
 }
 
 function mapStateToProps(state) {
-  return state;
+  return state.reducer;
 }
 
 export default connect(mapStateToProps)(Dash);
