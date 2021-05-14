@@ -26,7 +26,7 @@ class Nav extends Component {
     axios.get('/api/auth/me')
     .then(res=>{
       console.log('test')
-      this.props.reducer.updateUser(res.data)
+      this.props.updateUser(res.data)
 
     })
     .catch(err=>{

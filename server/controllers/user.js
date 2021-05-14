@@ -38,7 +38,8 @@ module.exports = {
     },
 
     getUser:  (req, res)=>{
-        return   req.session.user ? res.status(302).send(req.session.user): res.sendStatus(404);
+        // console.log(req.session.user)
+        return   req.session.user ? res.status(200).send(req.session.user): res.sendStatus(404);
     },
     logout: async(req,res)=>{
         req.session.destroy();
