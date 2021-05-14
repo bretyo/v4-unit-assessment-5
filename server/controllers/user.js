@@ -31,8 +31,8 @@ module.exports = {
         }
         req.session.user = {
             username: user.username,
-            password: user.password,
-            profilePic: user.profile_pic
+            profilePic: user.profile_pic,
+            id: user.id
         }
         return res.status(202).send(req.session.user);
     },
