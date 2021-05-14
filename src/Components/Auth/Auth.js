@@ -39,7 +39,7 @@ class Auth extends Component {
   register() {
     axios.post('/api/auth/register', this.state)
       .then(res => {
-        this.props.history.push('/')
+        this.props.history.push('/dash')
       })
       .catch(err => {
         console.log(err)
