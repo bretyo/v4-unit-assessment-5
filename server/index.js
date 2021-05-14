@@ -1,32 +1,20 @@
 require('dotenv').config();
 const massive = require('massive');
 const session = require('express-session');
-const express = require('express'),
-      userCtrl = require('./controllers/user'),
-      postCtrl = require('./controllers/posts')
+const express = require('express');
+const userCtrl = require('./controllers/user');
+const postCtrl = require('./controllers/posts');
 
-// DESTRUCTURING
-const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
-
+      
 const app = express();
 
 // TOP LEVEL MIDDLEWARE
 app.use(express.json());
 
+// DESTRUCTURING
+const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 
 // MASSIVE
-massive({
-    connectionString: CONNECTION_STRING,
-    ssl: {
-        rejectUnauthorized: false
-    }
-})
-.then(()=>{
-    app.set('db', db)
-    console.log('Database Connected!')
-    app.listen(SERVER_PORT, _ => console.log(`running on ${SERVER_PORT}`));
-})
-
 app.use(
     session({
         secret: SESSION_SECRET,
@@ -37,7 +25,18 @@ app.use(
         }
     })
 )
-
+    
+    massive({
+        connectionString: CONNECTION_STRING,
+        ssl: {
+            rejectUnauthorized: false
+        }
+    })
+    .then(()=>{
+        app.set('db', db)
+        console.log('Database Connected!')
+        app.listen(SERVER_PORT=> console.log(`running on ${SERVER_PORT}`));
+    })
 //Auth Endpoints
 app.post('/api/auth/register', userCtrl.register);
 app.post('/api/auth/login', userCtrl.login);

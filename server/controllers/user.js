@@ -18,5 +18,7 @@ module.exports = {
         return res.status(201).send(req.session.user)
     },
 
-    
+    login: async(req,res)=>{
+        const db = req.app.get('db');
+    }
 }
