@@ -23,7 +23,10 @@ class Dash extends Component {
   componentDidMount() {
     this.grabPosts();
   }
-  
+
+  // componentDidUpdate(prevProps){
+  //   prevProps.profilePic === '' && this.props.updateUser(res.data)
+  // }
 
   grabPosts() {
     let { search, myPosts, oldestFirst } = this.state;

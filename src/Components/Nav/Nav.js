@@ -20,6 +20,8 @@ class Nav extends Component {
     this.getUser()
   }
 
+  
+
   getUser() {
     axios.get('/api/auth/me')
     .then(res=>{
