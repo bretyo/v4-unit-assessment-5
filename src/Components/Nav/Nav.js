@@ -36,7 +36,7 @@ class Nav extends Component {
   
   logout() {
     axios.post('/api/auth/logout')
-      .then(res=> this.props.reducer.logout())
+      .then(res=> this.props.logout())
       .catch(err=>console.log(err))
   }
   
